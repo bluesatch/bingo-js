@@ -1,0 +1,31 @@
+* { box-sizing: border-box;}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #eaeae3;
+}
+
+.main {
+    margin: 100px auto;
+    width: 90%;
+
+}
+
+table {
+    background-color: whitesmoke;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 2px solid #f00;
+    text-align: center;
+    width: 100px;
+}
+
+#free, .pickedBG {
+    color: whitesmoke;
+    background-color: #555;
+}
