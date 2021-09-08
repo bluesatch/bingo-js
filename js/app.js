@@ -53,7 +53,7 @@ const setSquare =(thisSquare)=> {
 
     usedNums[newNum] = true;
     document.getElementById(currSquare).innerHTML = newNum;
-    document.getElementById(currsquare).className = '';
+    document.getElementById(currSquare).className = '';
     document.getElementById(currSquare).onmousedown = toggleColor;
     
 }
@@ -72,6 +72,7 @@ const anotherCard =()=> {
 }
 
 const toggleColor =(e)=> {
+
     var thisSquare;
     if (e) {
         thisSquare = e.target;
@@ -84,4 +85,50 @@ const toggleColor =(e)=> {
     } else {
         thisSquare.className = '';
     }
+    
+    checkWin();
+}
+
+
+
+// checking for win!
+
+const checkWin =()=> {
+    var winningOption = -1;
+    var winArr = [];
+    var setSquares = 0;
+
+    var winners = new Array(
+        31, 992, 15360, 507904, 541729,
+        557328, 1083458, 2162820,
+        4329736, 8519745, 8659472, 16252928
+    );
+    
+    for (var i = 0; i < 24; i++) {
+        var currSquare = `square${i}`;
+
+        if (document.getElementById(currSquare).className != '') {
+            document.getElementById(currSquare).className = 'pickedBG';
+            setSquares = setSquares | Math.pow(2, i);
+        }
+    }
+
+    for (var i = 0; i < winners.length; i++) {
+        if ((winners[i] & setSquares) == winners[i]) {
+            winningOption = i;
+            console.log(winningOption);
+        }
+
+    }
+    
+    if (winningOption > -1) {
+        for (var i=0; i < 24; i++) {
+            if (winners[winningOption] && Math.pow(2, i)) {
+                currSquare = `square${i}`;
+                document.getElementById(currSquare).className = 'winningBG'
+            }
+        } 
+        
+    }
+    
 }
